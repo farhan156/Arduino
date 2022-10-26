@@ -51,6 +51,20 @@ void setup() {
     pinMode(s6,INPUT);      
   //------------------------------------------------------------------------//
   Serial.begin(9600); 
+  //-----------------------------Motors-------------------------------------//
+    pinMode(LeftMotorBackward,OUTPUT);
+    pinMode(LeftMotorForward,OUTPUT);
+    pinMode(RightMotorForward,OUTPUT);
+    pinMode(RightMotorBackward,OUTPUT);
+  //------------------------------------------------------------------------//
+    pinMode(s1,INPUT);
+    pinMode(s2,INPUT);
+    pinMode(s3,INPUT);  
+    pinMode(s4,INPUT);  
+    pinMode(s5,INPUT);
+    pinMode(s6,INPUT);      
+  //------------------------------------------------------------------------//
+  Serial.begin(9600); 
 
    // moveForward(100);
   delay(200);
@@ -329,11 +343,11 @@ void basic_line_follow(){
     //One Sensor
     
     //100000
-    if(s1==HIGH && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
+    if(s1==HIGH && s2==HIGH && s3==HIGH && s4==HIGH && s5==HIGH && s6==HIGH){
       moveLeft();
     }
     //010000
-    else if(s1==LOW && s2==HIGH && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
+    else if(s1==LOW && s2==HIGH && s3==LOW && s4==HIGH  && s5==LOW && s6==LOW){
       moveLeft();
     }
     //001000
@@ -349,7 +363,7 @@ void basic_line_follow(){
       moveRight();
     }
     //000001
-    else if(s1==LOW && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==HIGH){
+    else if(s1==LOW && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
       moveRight();
     }
     
