@@ -43,17 +43,17 @@ void setup() {
     pinMode(RightMotorForward,OUTPUT);
     pinMode(RightMotorBackward,OUTPUT);
   //------------------------------------------------------------------------//
-    pinMode(s1,INPUT);
     pinMode(s2,INPUT);
-    pinMode(s3,INPUT);  
+    pinMode(s3,INPUT);
     pinMode(s4,INPUT);  
-    pinMode(s5,INPUT);
-    pinMode(s6,INPUT);      
+    pinMode(s5,INPUT);  
+    pinMode(s6,INPUT);
+    pinMode(s1,INPUT);      
   //------------------------------------------------------------------------//
-  Serial.begin(9600); 
+  Serial.begin(9700); 
 
    // moveForward(100);
-  delay(200);
+  delay(300);
 }
 
 
@@ -254,70 +254,6 @@ void loop() {
     else if(s1==LOW && s2==LOW && s3==LOW && s4==HIGH && s5==HIGH && s6==HIGH){
       moveRight();
     }
-    
-    //-----------------------------------------------------------------------------//
-    //Four Sensors
-    
-    //111100 or 111110 or 111000
-    else if((s1==HIGH && s2==HIGH && s3==HIGH && s4==HIGH && s5==LOW && s6==LOW) || 
-            (s1==HIGH && s2==HIGH && s3==HIGH && s4==HIGH && s5==HIGH && s6==LOW)) {
-            //(s1==HIGH && s2==HIGH && s3==HIGH && s4==LOW && s5==LOW && s6==LOW)){
-      //delay(2000);
-      stopMotors();
-      moveRightl_nofwd();
-      delay(50);
-      stopMotors();
-      //delay(2000);
-      updateSensors();
-      if(s1==LOW && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
-          while (s1==HIGH || s2==HIGH || s3==HIGH || s4==HIGH || s5==HIGH || s6==HIGH){
-              updateSensors();
-              allwhite();
-          }
-      }
-      else{
-          moveRight();
-      }
-    }
-    //011110
-    else if(s1==LOW && s2==HIGH && s3==HIGH && s4==HIGH && s5==HIGH && s6==LOW){
-        moveRightl_nofwd();
-        delay(200);
-    }
-    
-    //-----------------------------------------------------------------------------//
-    //Else Sensors
-    //001111
-    else if(s1==LOW && s2==LOW && s3==HIGH && s4==HIGH && s5==HIGH && s6==HIGH){
-      moveRightl_with_fwd();
-    }
-    //000000
-    else if(s1==LOW && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
-      allwhite();
-    }
-    //111111
-    else if(s1==HIGH && s2==HIGH && s3==HIGH && s4==HIGH && s5==HIGH && s6==HIGH){
-      moveRightl_with_fwd();
-    }
-    //101100
-    else if(s1==HIGH && s2==LOW && s3==HIGH && s4==HIGH && s5==LOW && s6==LOW){
-      moveForward();
-    }
-    //100100
-    else if(s1==HIGH && s2==LOW && s3==LOW && s4==HIGH && s5==LOW && s6==LOW){
-      moveForward();
-    }
-    //001101
-    else if(s1==LOW && s2==LOW && s3==HIGH && s4==HIGH && s5==LOW && s6==HIGH){
-      moveForward();
-    }
-    //001001
-    else if(s1==LOW && s2==LOW && s3==HIGH && s4==LOW && s5==LOW && s6==HIGH){
-      moveForward();
-    }
-    
-}
-
 //---------------------------------------------------------------------------------//
 //---------------------------------------------------------------------------------//
 //---------------------------------------------------------------------------------//
