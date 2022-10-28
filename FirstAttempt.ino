@@ -54,12 +54,15 @@ void setup() {
 
    // moveForward(100);
   delay(300);
+        
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 
 //---------------------------------------------------------------------------------//
 //------------------------------Motor Functions------------------------------------//
 //---------------------------------------------------------------------------------//
+
 
 void moveForward(){
     analogWrite(LeftMotorForward,shm);
@@ -185,6 +188,13 @@ void updateSensors(){
 
 void loop() {
 
+        
+  digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
+  delay(1000);                      // wait for a second
+  digitalWrite(LED_BUILTIN, LOW);   // turn the LED off by making the voltage LOW
+  delay(1000);                      // wait for a second   
+        
+        
     
     //100000
     if(s1==HIGH && s2==LOW && s3==LOW && s4==LOW && s5==LOW && s6==LOW){
